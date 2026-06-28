@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÓrgãoTec Assistência Musical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --preto: #0A0A0F;
+  --noite: #111118;
+  --card-bg: #16161F;
+  --dourado: #C9A84C;
+  --dourado-claro: #E2C97A;
+  --marfim: #EDE8DE;
+  --cinza: #8A8A9A;
+  --cinza-claro: #B0AFBB;
+  --verde-wa: #25D366;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--preto); color: var(--marfim); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 60px;
+  background: linear-gradient(to bottom, rgba(10,10,15,0.96) 0%, transparent 100%);
+  backdrop-filter: blur(6px);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: 0.05em; color: var(--dourado); }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--cinza-claro); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; transition: color 0.25s; }
+.nav-links a:hover { color: var(--dourado); }
+
+/* Link Instagram nav */
+.nav-insta {
+  display: inline-flex; align-items: center; gap: 7px;
+  text-decoration: none; color: var(--cinza-claro);
+  font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 500; transition: color 0.25s;
+}
+.nav-insta:hover { color: var(--dourado); }
+.nav-insta svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 30px 80px; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=85&w=1920') center/cover no-repeat;
+  filter: brightness(0.2) saturate(0.6); z-index: 0;
+}
+.hero-staves {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.06;
+  background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 28px, var(--dourado) 28px, var(--dourado) 29px);
+}
+.hero-content { position: relative; z-index: 2; max-width: 860px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dourado); margin-bottom: 30px; font-weight: 600;
+}
+.hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 36px; height: 1px; background: var(--dourado); opacity: 0.7; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 28px; color: var(--marfim); }
+.hero h1 em { font-style: italic; color: var(--dourado); }
+.hero-desc { max-width: 600px; margin: 0 auto 50px; font-size: 1rem; line-height: 1.85; color: var(--cinza-claro); font-weight: 300; }
+.hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* BOTÕES */
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 15px 32px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.28s ease; cursor: pointer; border: none; }
+.btn-gold { background: var(--dourado); color: #0A0A0F; }
+.btn-gold:hover { background: var(--dourado-claro); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.35); }
+.btn-ghost { background: transparent; color: var(--marfim); border: 1px solid rgba(237,232,222,0.25); }
+.btn-ghost:hover { border-color: var(--dourado); color: var(--dourado); transform: translateY(-2px); }
+.btn-wa { background: var(--verde-wa); color: #fff; }
+.btn-wa:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+.btn-insta { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: #fff; }
+.btn-insta:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(253,29,29,0.3); }
+
+/* MARCAS */
+.brands-section { background: var(--noite); padding: 50px 0 40px; overflow: hidden; border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); }
+.brands-label { text-align: center; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 22px; font-weight: 600; }
+.marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.marquee-track.reverse { animation-direction: reverse; }
+.brand-tag { padding: 10px 26px; margin: 0 8px; border: 1px solid rgba(201,168,76,0.2); border-radius: 2px; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--cinza-claro); white-space: nowrap; font-weight: 500; background: rgba(201,168,76,0.04); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SEÇÕES */
+.section { padding: 100px 30px; }
+.section-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dourado); font-weight: 600; margin-bottom: 16px; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--marfim); max-width: 560px; }
+.section-title em { font-style: italic; color: var(--dourado); }
+
+/* SERVIÇOS */
+.services-layout { max-width: 1180px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.12); border-radius: 8px; overflow: hidden; }
+.service-card { background: var(--card-bg); padding: 56px 50px; transition: background 0.3s; }
+.service-card:hover { background: #1A1A28; }
+.service-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 28px; letter-spacing: -0.02em; }
+.service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: var(--marfim); margin-bottom: 18px; line-height: 1.25; }
+.service-card p { color: var(--cinza); line-height: 1.85; font-size: 0.93rem; font-weight: 300; margin-bottom: 36px; }
+.service-list { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 10px; }
+.service-list li { display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: var(--cinza-claro); }
+.service-list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--dourado); flex-shrink: 0; }
+
+/* ORÇAMENTO */
+.orcamento-section { background: var(--noite); border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); }
+.orcamento-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.12); border-radius: 8px; overflow: hidden; }
+.orcamento-card { background: var(--card-bg); padding: 56px 50px; display: flex; flex-direction: column; }
+.orcamento-card .role { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); font-weight: 600; margin-bottom: 14px; }
+.orcamento-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--marfim); margin-bottom: 30px; line-height: 1.3; }
+.orcamento-phone { font-size: 1.5rem; font-weight: 600; color: var(--marfim); letter-spacing: 0.02em; margin-bottom: 32px; }
+.orcamento-phone span { display: block; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cinza); font-weight: 400; margin-bottom: 6px; }
+
+/* LOJA */
+.loja-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.loja-visual { position: relative; height: 380px; background: var(--card-bg); border: 1px solid rgba(201,168,76,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.loja-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.12) 0%, transparent 70%); }
+.loja-icon { font-size: 5rem; position: relative; z-index: 1; opacity: 0.5; }
+.badge-soon { position: absolute; top: 24px; right: 24px; background: var(--dourado); color: #0A0A0F; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; }
+
+/* LOCALIZAÇÃO */
+.loc-section { background: var(--noite); }
+.loc-inner { max-width: 1180px; margin: 0 auto; }
+.loc-map { margin-top: 60px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(201,168,76,0.15); cursor: pointer; position: relative; }
+.loc-map img { width: 100%; height: 340px; object-fit: cover; display: block; filter: brightness(0.45) saturate(0.4); transition: filter 0.3s; }
+.loc-map:hover img { filter: brightness(0.55) saturate(0.5); }
+.loc-map-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; }
+.loc-map-overlay .pin { font-size: 2.2rem; }
+.loc-map-overlay h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--marfim); }
+.loc-map-overlay p { color: var(--cinza-claro); font-size: 0.88rem; letter-spacing: 0.04em; }
+
+/* INSTAGRAM BANNER */
+.insta-banner {
+  background: var(--card-bg);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 30px;
+}
+.insta-banner-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+}
+.insta-left { display: flex; align-items: center; gap: 24px; }
+.insta-icon-wrap {
+  width: 64px; height: 64px; border-radius: 18px; flex-shrink: 0;
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.insta-icon-wrap svg { width: 32px; height: 32px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.insta-text-block .insta-handle {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--dourado); font-weight: 600; margin-bottom: 6px;
+}
+.insta-text-block h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--marfim); margin-bottom: 6px; }
+.insta-text-block p { font-size: 0.85rem; color: var(--cinza); font-weight: 300; }
+
+/* RODAPÉ */
+footer { background: #06060A; padding: 60px 30px 40px; border-top: 1px solid rgba(201,168,76,0.12); }
+.footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: start; padding-bottom: 40px; border-bottom: 1px solid rgba(201,168,76,0.08); margin-bottom: 30px; }
+.footer-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--dourado); margin-bottom: 12px; }
+.footer-desc { font-size: 0.85rem; color: var(--cinza); line-height: 1.7; max-width: 320px; font-weight: 300; }
+.footer-right { display: flex; flex-direction: column; gap: 32px; align-items: flex-end; }
+.footer-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+.footer-links a { text-decoration: none; color: var(--cinza); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: var(--dourado); }
+.footer-social { display: flex; align-items: center; gap: 10px; }
+.footer-social-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; color: var(--cinza);
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; transition: color 0.2s;
+  padding: 8px 16px; border: 1px solid rgba(201,168,76,0.15); border-radius: 3px;
+}
+.footer-social-link:hover { color: var(--marfim); border-color: rgba(201,168,76,0.35); }
+.footer-social-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+.footer-copy { max-width: 1180px; margin: 0 auto; font-size: 0.75rem; color: rgba(138,138,154,0.55); letter-spacing: 0.06em; }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .services-layout, .orcamento-inner, .loja-inner, .footer-inner { grid-template-columns: 1fr; gap: 2px; }
+  .loja-inner { gap: 40px; }
+  .loja-visual { height: 220px; }
+  .service-card, .orcamento-card { padding: 40px 28px; }
+  .footer-right { align-items: flex-start; }
+  .footer-links { align-items: flex-start; }
+  .insta-banner-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 500px) { .hero h1 { font-size: 2.2rem; } .section { padding: 70px 20px; } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ÓrgãoTec</div>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#orcamento">Orçamento</a></li>
+    <li><a href="#loja">Loja</a></li>
+    <li><a href="#localizacao">Localização</a></li>
+    <li>
+      <a href="https://www.instagram.com/orgao.tec/" target="_blank" rel="noopener" class="nav-insta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+        </svg>
+        Instagram
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-staves"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Assistência Musical Especializada</div>
+    <h1>Cuidamos do seu<br><em>instrumento</em><br>com precisão.</h1>
+    <p class="hero-desc">
+      Manutenção, reparos e restauração de órgãos eletrônicos,
+      teclados e pianos digitais. Atendimento para músicos,
+      igrejas e instituições em Nova Odessa&nbsp;–&nbsp;SP.
+    </p>
+    <div class="hero-ctas">
+      <a href="#orcamento" class="btn btn-gold">Solicitar orçamento</a>
+      <a href="#servicos" class="btn btn-ghost">Ver serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS ÓRGÃOS -->
+<div class="brands-section">
+  <div class="brands-label">Órgãos Eletrônicos</div>
+  <div class="marquee-track">
+    <div class="brand-tag">Tokai</div><div class="brand-tag">Harmonia</div><div class="brand-tag">Viscount</div><div class="brand-tag">Rohnes</div><div class="brand-tag">Acordes</div><div class="brand-tag">Hammond</div>
+    <div class="brand-tag">Tokai</div><div class="brand-tag">Harmonia</div><div class="brand-tag">Viscount</div><div class="brand-tag">Rohnes</div><div class="brand-tag">Acordes</div><div class="brand-tag">Hammond</div>
+  </div>
+</div>
+
+<!-- MARCAS TECLADOS -->
+<div class="brands-section" style="padding-top:24px;padding-bottom:50px;border-top:none;">
+  <div class="brands-label">Teclados &amp; Pianos Digitais</div>
+  <div class="marquee-track reverse">
+    <div class="brand-tag">Yamaha</div><div class="brand-tag">Roland</div><div class="brand-tag">Korg</div><div class="brand-tag">Casio</div><div class="brand-tag">Nord</div><div class="brand-tag">Kurzweil</div><div class="brand-tag">Kawai</div><div class="brand-tag">Alesis</div>
+    <div class="brand-tag">Yamaha</div><div class="brand-tag">Roland</div><div class="brand-tag">Korg</div><div class="brand-tag">Casio</div><div class="brand-tag">Nord</div><div class="brand-tag">Kurzweil</div><div class="brand-tag">Kawai</div><div class="brand-tag">Alesis</div>
+  </div>
+</div>
+
+<!-- SERVIÇOS -->
+<section class="section" id="servicos">
+  <span class="section-label">O que fazemos</span>
+  <h2 class="section-title">Diagnóstico técnico<br>e reparo <em>especializado</em>.</h2>
+  <div class="services-layout">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3>Órgãos Eletrônicos</h3>
+      <p>Atendimento técnico completo para órgãos de todas as marcas, com diagnóstico preciso e peças de qualidade.</p>
+      <ul class="service-list">
+        <li>Reparos em placas e circuitos</li>
+        <li>Substituição de fontes de alimentação</li>
+        <li>Integração e configuração MIDI</li>
+        <li>Restauração de painéis e controles</li>
+        <li>Manutenção preventiva</li>
+      </ul>
+      <a href="https://wa.me/5519982779503" class="btn btn-wa">Falar com técnico</a>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3>Teclados &amp; Pianos Digitais</h3>
+      <p>Serviço especializado em instrumentos de palco e estúdio, preservando a resposta e o toque originais do fabricante.</p>
+      <ul class="service-list">
+        <li>Reparo e substituição de teclas</li>
+        <li>Sensores e mecânica do teclado</li>
+        <li>Sistemas de áudio e amplificação</li>
+        <li>Displays e interfaces</li>
+        <li>Placas e firmware</li>
+      </ul>
+      <a href="https://wa.me/5518999999998" class="btn btn-wa">Falar com técnico</a>
+    </div>
+  </div>
+</section>
+
+<!-- ORÇAMENTO -->
+<section class="section orcamento-section" id="orcamento">
+  <span class="section-label" style="display:block;text-align:center;">Contato direto</span>
+  <h2 class="section-title" style="max-width:100%;text-align:center;margin:0 auto 70px;">
+    Solicite um <em>orçamento</em><br>sem compromisso.
+  </h2>
+  <div class="orcamento-inner">
+    <div class="orcamento-card">
+      <div class="role">Téc. Israel Marciano — Órgãos Eletrônicos</div>
+      <h3>Atendimento especializado em órgãos de todas as marcas</h3>
+      <div class="orcamento-phone">
+        <span>Telefone / WhatsApp</span>
+        (19) 98277-9503
+      </div>
+      <a href="https://wa.me/5519982779503?text=Olá,%20gostaria%20de%20um%20orçamento%20para%20reparo%20de%20órgão." class="btn btn-wa" style="align-self:flex-start;">Chamar no WhatsApp</a>
+    </div>
+    <div class="orcamento-card">
+      <div class="role">Téc. Adael Oliveira — Teclados &amp; Pianos</div>
+      <h3>Reparos em teclados, sintetizadores e pianos digitais</h3>
+      <div class="orcamento-phone">
+        <span>Telefone / WhatsApp</span>
+        (18) 99999-9998
+      </div>
+      <a href="https://wa.me/5518999999998?text=Olá,%20gostaria%20de%20um%20orçamento%20para%20reparo%20de%20teclado." class="btn btn-wa" style="align-self:flex-start;">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOJA -->
+<section class="section" id="loja">
+  <div class="loja-inner">
+    <div class="loja-visual">
+      <div class="loja-icon">🛒</div>
+      <div class="badge-soon">Em breve</div>
+    </div>
+    <div>
+      <span class="section-label">Loja online</span>
+      <h2 class="section-title" style="margin-bottom:24px;">Peças e acessórios<br>para o seu <em>instrumento</em>.</h2>
+      <p style="color:var(--cinza);line-height:1.85;font-size:0.93rem;font-weight:300;margin-bottom:36px;">
+        Em breve você poderá adquirir peças de reposição, cabos,
+        fontes, pedais e acessórios especializados diretamente pela
+        nossa loja. Tudo selecionado pelos nossos técnicos para garantir
+        compatibilidade e qualidade.
+      </p>
+      <a href="#" class="btn btn-ghost">Avisar quando abrir</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM BANNER -->
+<div class="insta-banner">
+  <div class="insta-banner-inner">
+    <div class="insta-left">
+      <div class="insta-icon-wrap">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+        </svg>
+      </div>
+      <div class="insta-text-block">
+        <div class="insta-handle">@orgao.tec</div>
+        <h3>Siga no Instagram</h3>
+        <p>Bastidores, reparos e novidades do universo dos órgãos e teclados.</p>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/orgao.tec/" target="_blank" rel="noopener" class="btn btn-insta">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="white" stroke="none"/>
+      </svg>
+      Seguir agora
+    </a>
+  </div>
+</div>
+
+<!-- LOCALIZAÇÃO -->
+<section class="section loc-section" id="localizacao">
+  <div class="loc-inner">
+    <span class="section-label">Onde estamos</span>
+    <h2 class="section-title">Atendimento presencial<br>em <em>Nova Odessa-SP</em>.</h2>
+    <div class="loc-map" onclick="window.open('https://wa.me/5519982779503?text=Olá,%20gostaria%20de%20agendar%20um%20atendimento.','_blank')">
+      <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1600" alt="Mapa" loading="lazy">
+      <div class="loc-map-overlay">
+        <div class="pin">📍</div>
+        <h4>Nova Odessa — SP</h4>
+        <p>Clique para agendar atendimento via WhatsApp</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ÓrgãoTec Assistência Musical</div>
+      <p class="footer-desc">
+        Especialistas em manutenção e reparo de órgãos eletrônicos desde 1993,
+        teclados e pianos digitais. Nova Odessa-SP.
+      </p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/orgao.tec/" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+          </svg>
+          @orgao.tec
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#orcamento">Orçamento</a>
+        <a href="#loja">Loja</a>
+        <a href="#localizacao">Localização</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 ÓrgãoTec Assistência Musical · Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
